@@ -1,0 +1,45 @@
+x-runtime: &runtime
+  image: unihybrid-ai:phase-${PHASE:-08}
+  build:
+    context: .
+    target: runtime
+  environment:
+    GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    MODEL_NAME: ${MODEL_NAME:-gemini-3.5-flash-lite}
+    CURRENT_TERM: ${CURRENT_TERM:-2026-FALL}
+    DATA_DIR: /app/state
+    LOGS_DIR: /app/logs
+    MODEL_CACHE: /app/model-cache
+  volumes:
+    - data:/app/state
+    - logs:/app/logs
+    - models:/app/model-cache
+
+services:
+  app:
+    <<: *runtime
+    command: ["python", "-m", "streamlit", "run", "app.py", "--server.address=0.0.0.0", "--server.port=8501"]
+    ports:
+      - "127.0.0.1:8501:8501"
+    depends_on:
+      init:
+        condition: service_completed_successfully
+  init:
+    <<: *runtime
+    command: ["python", "-m", "scripts.ingest_docs"]
+  test:
+    image: unihybrid-ai-test:phase-${PHASE:-08}
+    build:
+      context: .
+      target: test
+    environment:
+      GEMINI_API_KEY: ""
+    # Tests use temporary database/vector/log paths; only cached model weights are shared.
+    volumes:
+      - models:/app/model-cache:ro
+    command: ["python", "-m", "pytest", "-q"]
+
+volumes:
+  data:
+  logs:
+  models:

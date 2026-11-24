@@ -1,0 +1,547 @@
+[
+  {
+    "id": "Q001",
+    "query": "What is my GPA?",
+    "expected_route": "STRUCTURED",
+    "expected_tools": [
+      "get_student_profile"
+    ],
+    "expected_source_file": null,
+    "key_facts": [
+      "GPA 8.4"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q002",
+    "query": "What is my GPA and fee status?",
+    "expected_route": "STRUCTURED",
+    "expected_tools": [
+      "get_student_profile",
+      "get_fee_status"
+    ],
+    "expected_source_file": null,
+    "key_facts": [
+      "GPA 8.4",
+      "2026-FALL fees Paid",
+      "outstanding 0"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q003",
+    "query": "Show my courses and grades",
+    "expected_route": "STRUCTURED",
+    "expected_tools": [
+      "get_enrollments"
+    ],
+    "expected_source_file": null,
+    "key_facts": [
+      "ME-001",
+      "ME-002"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q004",
+    "query": "What is my email?",
+    "expected_route": "STRUCTURED",
+    "expected_tools": [
+      "get_student_profile"
+    ],
+    "expected_source_file": null,
+    "key_facts": [
+      "s012@example.invalid"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q005",
+    "query": "Show my department average GPA",
+    "expected_route": "STRUCTURED",
+    "expected_tools": [
+      "get_student_profile",
+      "get_department_stats"
+    ],
+    "expected_source_file": null,
+    "key_facts": [
+      "Mechanical",
+      "8 students",
+      "average GPA 7.62"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q006",
+    "query": "Show my record",
+    "expected_route": "STRUCTURED",
+    "expected_tools": [
+      "get_student_profile"
+    ],
+    "expected_source_file": null,
+    "key_facts": [
+      "S-012",
+      "GPA 8.4"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q007",
+    "query": "What is the minimum attendance for exams?",
+    "expected_route": "UNSTRUCTURED",
+    "expected_tools": [],
+    "expected_source_file": "Academic_Regulations.pdf",
+    "key_facts": [
+      "75 percent per course"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q008",
+    "query": "What are the library hours?",
+    "expected_route": "UNSTRUCTURED",
+    "expected_tools": [],
+    "expected_source_file": "Student_Handbook.txt",
+    "key_facts": [
+      "Monday through Friday",
+      "09:00 to 17:00"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q009",
+    "query": "What is the scholarship application deadline?",
+    "expected_route": "UNSTRUCTURED",
+    "expected_tools": [],
+    "expected_source_file": "Scholarship_Policy.pdf",
+    "key_facts": [
+      "15 December 2026 versus 20 December 2026",
+      "authority not resolved"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q010",
+    "query": "What minimum GPA is required for a merit scholarship?",
+    "expected_route": "UNSTRUCTURED",
+    "expected_tools": [],
+    "expected_source_file": "Scholarship_Policy.pdf",
+    "key_facts": [
+      "minimum GPA 8.0"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q011",
+    "query": "What are the backlog rules?",
+    "expected_route": "UNSTRUCTURED",
+    "expected_tools": [],
+    "expected_source_file": "Academic_Regulations.pdf",
+    "key_facts": [
+      "failed course is a backlog",
+      "pass registered repeat examination"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q012",
+    "query": "How many books can I borrow?",
+    "expected_route": "UNSTRUCTURED",
+    "expected_tools": [],
+    "expected_source_file": "Student_Handbook.txt",
+    "key_facts": [
+      "three books",
+      "fourteen days"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q013",
+    "query": "Am I eligible for a merit scholarship and what is the deadline?",
+    "expected_route": "HYBRID",
+    "expected_tools": [
+      "get_student_profile",
+      "get_fee_status"
+    ],
+    "expected_source_file": "Scholarship_Policy.pdf",
+    "key_facts": [
+      "GPA 8.4, year 3, no outstanding fees satisfy criteria",
+      "deadline conflict requires confirmation"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q014",
+    "query": "Compare my fees with the scholarship policy",
+    "expected_route": "HYBRID",
+    "expected_tools": [
+      "get_student_profile",
+      "get_fee_status"
+    ],
+    "expected_source_file": "Scholarship_Policy.pdf",
+    "key_facts": [
+      "current-term fees Paid",
+      "policy requires no outstanding fees"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q015",
+    "query": "Show my GPA and attendance rules",
+    "expected_route": "HYBRID",
+    "expected_tools": [
+      "get_student_profile"
+    ],
+    "expected_source_file": "Academic_Regulations.pdf",
+    "key_facts": [
+      "GPA 8.4",
+      "75 percent attendance"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q016",
+    "query": "Does my profile qualify for a scholarship?",
+    "expected_route": "HYBRID",
+    "expected_tools": [
+      "get_student_profile",
+      "get_fee_status"
+    ],
+    "expected_source_file": "Scholarship_Policy.pdf",
+    "key_facts": [
+      "GPA/year/fee criteria satisfied"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q017",
+    "query": "Who won the cricket match?",
+    "expected_route": "OUT_OF_SCOPE",
+    "expected_tools": [],
+    "expected_source_file": null,
+    "key_facts": [],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q018",
+    "query": "Give me a pasta recipe",
+    "expected_route": "OUT_OF_SCOPE",
+    "expected_tools": [],
+    "expected_source_file": null,
+    "key_facts": [],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q019",
+    "query": "What is the weather in Delhi?",
+    "expected_route": "OUT_OF_SCOPE",
+    "expected_tools": [],
+    "expected_source_file": null,
+    "key_facts": [],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q020",
+    "query": "Scholarship?",
+    "expected_route": "UNSTRUCTURED",
+    "expected_tools": [],
+    "expected_source_file": "Scholarship_Policy.pdf",
+    "key_facts": [
+      "minimum GPA 8.0",
+      "years 2-4",
+      "no outstanding current-term fees"
+    ],
+    "split": "tuning",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q021",
+    "query": "What is my current-term fee due date?",
+    "expected_route": "STRUCTURED",
+    "expected_tools": [
+      "get_fee_status"
+    ],
+    "expected_source_file": null,
+    "key_facts": [
+      "2026-12-15"
+    ],
+    "split": "heldout",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q022",
+    "query": "What year am I in?",
+    "expected_route": "STRUCTURED",
+    "expected_tools": [
+      "get_student_profile"
+    ],
+    "expected_source_file": null,
+    "key_facts": [
+      "year 3"
+    ],
+    "split": "heldout",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q023",
+    "query": "What is my student name?",
+    "expected_route": "STRUCTURED",
+    "expected_tools": [
+      "get_student_profile"
+    ],
+    "expected_source_file": null,
+    "key_facts": [
+      "Demo Student 12"
+    ],
+    "split": "heldout",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q024",
+    "query": "How many credits am I enrolled in?",
+    "expected_route": "STRUCTURED",
+    "expected_tools": [
+      "get_enrollments"
+    ],
+    "expected_source_file": null,
+    "key_facts": [
+      "6 total credits"
+    ],
+    "split": "heldout",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q025",
+    "query": "Show my department statistics",
+    "expected_route": "STRUCTURED",
+    "expected_tools": [
+      "get_student_profile",
+      "get_department_stats"
+    ],
+    "expected_source_file": null,
+    "key_facts": [
+      "Computer Science",
+      "9 students",
+      "average GPA 7.71"
+    ],
+    "split": "heldout",
+    "student_id": "S-001"
+  },
+  {
+    "id": "Q026",
+    "query": "Show my enrollments",
+    "expected_route": "STRUCTURED",
+    "expected_tools": [
+      "get_enrollments"
+    ],
+    "expected_source_file": null,
+    "key_facts": [
+      "No enrollment records found; no guessed courses"
+    ],
+    "split": "heldout",
+    "student_id": "S-025"
+  },
+  {
+    "id": "Q027",
+    "query": "What is my GPA?",
+    "expected_route": "STRUCTURED",
+    "expected_tools": [
+      "get_student_profile"
+    ],
+    "expected_source_file": null,
+    "key_facts": [
+      "No student record found; no guessed GPA"
+    ],
+    "split": "heldout",
+    "student_id": "S-999"
+  },
+  {
+    "id": "Q028",
+    "query": "Am I eligible for a merit scholarship with my overdue fees?",
+    "expected_route": "HYBRID",
+    "expected_tools": [
+      "get_student_profile",
+      "get_fee_status"
+    ],
+    "expected_source_file": "Scholarship_Policy.pdf",
+    "key_facts": [
+      "not eligible",
+      "GPA 8.7, year 2",
+      "30000 outstanding"
+    ],
+    "split": "heldout",
+    "student_id": "S-002"
+  },
+  {
+    "id": "Q029",
+    "query": "Do I meet the merit scholarship GPA, year, and current-term fee criteria?",
+    "expected_route": "HYBRID",
+    "expected_tools": [
+      "get_student_profile",
+      "get_fee_status"
+    ],
+    "expected_source_file": "Scholarship_Policy.pdf",
+    "key_facts": [
+      "GPA exactly 8.0 meets threshold",
+      "year 2",
+      "no outstanding fees"
+    ],
+    "split": "heldout",
+    "student_id": "S-001"
+  },
+  {
+    "id": "Q030",
+    "query": "What do the regulations say about clearing a backlog?",
+    "expected_route": "UNSTRUCTURED",
+    "expected_tools": [],
+    "expected_source_file": "Academic_Regulations.pdf",
+    "key_facts": [
+      "pass registered repeat examination"
+    ],
+    "split": "heldout",
+    "student_id": null
+  },
+  {
+    "id": "Q031",
+    "query": "How long may I borrow library books?",
+    "expected_route": "UNSTRUCTURED",
+    "expected_tools": [],
+    "expected_source_file": "Student_Handbook.txt",
+    "key_facts": [
+      "fourteen days"
+    ],
+    "split": "heldout",
+    "student_id": null
+  },
+  {
+    "id": "Q032",
+    "query": "What are the possible course grades according to the regulations?",
+    "expected_route": "UNSTRUCTURED",
+    "expected_tools": [],
+    "expected_source_file": "Academic_Regulations.pdf",
+    "key_facts": [
+      "A, B, C, D, F"
+    ],
+    "split": "heldout",
+    "student_id": null
+  },
+  {
+    "id": "Q033",
+    "query": "Does fee payment affect scholarship eligibility, and are my current fees paid?",
+    "expected_route": "HYBRID",
+    "expected_tools": [
+      "get_student_profile",
+      "get_fee_status"
+    ],
+    "expected_source_file": "Scholarship_Policy.pdf",
+    "key_facts": [
+      "no outstanding fees required",
+      "current-term fees Paid"
+    ],
+    "split": "heldout",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q034",
+    "query": "Is an attendance condonation exception defined?",
+    "expected_route": "UNSTRUCTURED",
+    "expected_tools": [],
+    "expected_source_file": "Academic_Regulations.pdf",
+    "key_facts": [
+      "no exception defined in supplied regulations"
+    ],
+    "split": "heldout",
+    "student_id": null
+  },
+  {
+    "id": "Q035",
+    "query": "What is the required application document list for the merit scholarship?",
+    "expected_route": "UNSTRUCTURED",
+    "expected_tools": [],
+    "expected_source_file": "Scholarship_Policy.pdf",
+    "key_facts": [
+      "required document list not specified in supplied policy"
+    ],
+    "split": "heldout",
+    "student_id": null
+  },
+  {
+    "id": "Q036",
+    "query": "Which team won the cricket match?",
+    "expected_route": "OUT_OF_SCOPE",
+    "expected_tools": [],
+    "expected_source_file": null,
+    "key_facts": [],
+    "split": "heldout",
+    "student_id": null
+  },
+  {
+    "id": "Q037",
+    "query": "Write a pasta recipe",
+    "expected_route": "OUT_OF_SCOPE",
+    "expected_tools": [],
+    "expected_source_file": null,
+    "key_facts": [],
+    "split": "heldout",
+    "student_id": null
+  },
+  {
+    "id": "Q038",
+    "query": "Explain quantum black holes",
+    "expected_route": "OUT_OF_SCOPE",
+    "expected_tools": [],
+    "expected_source_file": null,
+    "key_facts": [],
+    "split": "heldout",
+    "student_id": null
+  },
+  {
+    "id": "Q039",
+    "query": "Compare my GPA, year and fees with merit scholarship policy criteria",
+    "expected_route": "HYBRID",
+    "expected_tools": [
+      "get_student_profile",
+      "get_fee_status"
+    ],
+    "expected_source_file": "Scholarship_Policy.pdf",
+    "key_facts": [
+      "GPA 8.4",
+      "year 3",
+      "fees Paid",
+      "stated criteria satisfied"
+    ],
+    "split": "heldout",
+    "student_id": "S-012"
+  },
+  {
+    "id": "Q040",
+    "query": "What is the hostel refund deadline?",
+    "expected_route": "UNSTRUCTURED",
+    "expected_tools": [],
+    "expected_source_file": null,
+    "key_facts": [
+      "hostel refund deadline absent from retrieved evidence; no date invented"
+    ],
+    "split": "heldout",
+    "student_id": null
+  }
+]
