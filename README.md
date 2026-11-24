@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # UniHybrid AI
 
 Phases 00–07 are verified: the Docker Streamlit assistant runs at
@@ -161,3 +162,6 @@ log before adding build tools or changing versions. Actual fixes belong in repor
 
 Later phase commands in the planning files become runnable as implemented.
 See `docs/PROGRESS.md` and individual reports for actual verification status.
+=======
+# UnhybridAI
+>>>>>>> 77bb0b8e89a48c52bbf3fdb0ca2516ad2bdae7d3
